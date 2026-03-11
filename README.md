@@ -1,2 +1,0 @@
-# ProektikNaStile
-CP(P)
