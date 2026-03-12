@@ -12,4 +12,5 @@ add_executable(Minesweeper
         Visual/Render.cpp
         Config/Config.hpp
         Config/Config.cpp
+        main.cpp
 )
