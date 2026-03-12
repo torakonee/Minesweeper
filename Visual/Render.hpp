@@ -1,5 +1,6 @@
 #pragma once
 #include "../core/board.hpp"
+#include "../Config/Config.cpp"
 
 namespace ms {
 
