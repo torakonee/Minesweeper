@@ -1,6 +1,6 @@
 #pragma once
 #include "../core/board.hpp"
-#include "../Config/Config.cpp"
+#include "../Config/Config.hpp"
 
 namespace ms {
 
