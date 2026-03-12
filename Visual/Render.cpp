@@ -3,11 +3,17 @@
 
 namespace ms{
     void Render::drawField(const Board& board) const {
+        std::cout << "  ";
+        for (int x = 0; x < board.getWidth(); ++x) {
+            std::cout << x << " ";
+        }
+        std::cout << '\n';
         for (int y = 0; y < board.getHeight(); ++y) {
+            std::cout << y << " ";
             for (int x = 0; x < board.getWidth(); ++x) {
                 auto cell_opt = board.getCell(x, y);
 
-                if (!cell_opt.has_value()) {
+                if (!cell_opt) {
                     std::cout << "? ";
                     continue;
                 }
