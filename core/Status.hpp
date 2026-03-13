@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <memory>
-#include "../Config/config.hpp"
+#include "../Config/Config.hpp"
 
 namespace ms {
 class Status {
@@ -23,6 +23,6 @@ private:
   int moves = 0;
   int flagsam = 0;
   std::shared_ptr<Config> cg;
-  State st = State::Running;
+  State st = State::InProgress;
 };
 }

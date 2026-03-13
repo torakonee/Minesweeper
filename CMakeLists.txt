@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 include_directories(core)
 include_directories(Visual)
+include_directories(Config)
 
 add_executable(Minesweeper
         core/board.cpp
