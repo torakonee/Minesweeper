@@ -9,10 +9,10 @@ void Status::newFlag() {
   flagsam++;
 }
 void Status::gameOver() {
-  state = State::GameOver;
+  st = State::GameOver;
 }
 void Status::victory() {
-  state = State::Victory;
+  st = State::Victory;
 }
 Status::State Status::getState() const {
   return state;
@@ -23,6 +23,6 @@ void Status::print() const {
     std::cout << "Game Over ;-;" << std::endl;
   }
   if (state == state::Victory) {
-    std::cout << "You Won! Congratulations!" << std::endl;\
+    std::cout << "You Won! Congratulations!" << std::endl;
   }
 }
