@@ -5,11 +5,11 @@ namespace ms{
     void Render::drawField(const Board& board) const {
         std::cout << "  ";
         for (int x = 0; x < board.getWidth(); ++x) {
-            std::cout << x << " ";
+            std::cout << static_cast<char>('A'+x) << " ";
         }
         std::cout << '\n';
         for (int y = 0; y < board.getHeight(); ++y) {
-            std::cout << y << " ";
+            std::cout << static_cast<char>('A'+y) << " ";
             for (int x = 0; x < board.getWidth(); ++x) {
                 auto cell_opt = board.getCell(x, y);
 
