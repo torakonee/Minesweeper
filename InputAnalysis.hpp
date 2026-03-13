@@ -18,7 +18,7 @@ public:
     int size;
   };
 
-  struct DefualtIn {
+  struct DefaultIn {
 
   };
 
