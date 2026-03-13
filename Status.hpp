@@ -1,0 +1,26 @@
+#pragma once
+#include <iostream>
+#include <memory>
+#include "config.hpp"
+
+namespace ms {
+class Status {
+  public:
+  enum class State {
+    InProgress,
+    GameOver,
+    Victory
+  };
+  explicit Status(std::shared_ptr<Config> cg);
+  void plusMove();
+  void newFlag();
+  void setEnding(State end);
+  State getState() const;
+  void print() const;
+private:
+  
+  int moves = 0;
+  int flagsam = 0;
+  std::shared_ptr<Config> cg;
+  GameState st = GameState::Running;
+
