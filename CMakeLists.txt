@@ -10,7 +10,6 @@ add_executable(Minesweeper
         core/board.cpp
         core/cell.cpp
         Visual/Render.cpp
-        Config/Config.hpp
         Config/Config.cpp
         main.cpp
 )
