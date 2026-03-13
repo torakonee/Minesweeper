@@ -14,7 +14,8 @@ class Status {
   explicit Status(std::shared_ptr<Config> cg);
   void plusMove();
   void newFlag();
-  void setEnding(State end);
+  void gameOver();
+  void victory();
   State getState() const;
   void print() const;
 private:
