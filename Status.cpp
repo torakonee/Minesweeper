@@ -15,7 +15,7 @@ void Status::victory() {
   st = State::Victory;
 }
 Status::State Status::getState() const {
-  return state;
+  return st;
 }
 void Status::print() const {
   std::cout << "Moves: " << moves << std::endl << "Flags Placed: " << flagsam << std::endl << "Mines on the field: " << cg->getMines() << std::endl;
@@ -25,4 +25,5 @@ void Status::print() const {
   if (state == state::Victory) {
     std::cout << "You Won! Congratulations!" << std::endl;
   }
+}
 }
