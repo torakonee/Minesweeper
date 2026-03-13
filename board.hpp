@@ -48,6 +48,7 @@ private:
     int height_;
     int total_mines_;
     bool game_over_ = false;
+    bool mines_generated_ = false;
     std::vector<std::vector<std::unique_ptr<Cell>>> grid_;
 };
 
