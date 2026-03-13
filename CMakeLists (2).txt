@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.20)
+project(Minesweeper)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+option(BUILD_TESTS "Build tests" ON)
+
+add_library(minesweeper_core
+    core/cell.cpp
+    core/board.cpp
+)
+
+target_include_directories(minesweeper_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_executable(Minesweeper main.cpp)
+target_link_libraries(Minesweeper minesweeper_core)
+
+if(BUILD_TESTS)
+    find_package(GTest REQUIRED)
+    find_package(Threads REQUIRED)
+    
+    add_executable(test_cell tests/test_cell.cpp)
+    target_link_libraries(test_cell 
+        minesweeper_core
+        GTest::gtest
+        GTest::gtest_main
+        Threads::Threads
+    )
+    
+    add_executable(test_board tests/test_board.cpp)
+    target_link_libraries(test_board 
+        minesweeper_core
+        GTest::gtest
+        GTest::gtest_main
+        Threads::Threads
+    )
+    
+    include(GoogleTest)
+    gtest_discover_tests(test_cell)
+    gtest_discover_tests(test_board)
+endif()
