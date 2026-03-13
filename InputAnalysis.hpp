@@ -30,5 +30,6 @@ public:
 
   virtual ~InputAnalysis() = default;
 
-  virtual Input check(std::string inp) const = 0;
+  virtual Input check(const std::string& inp) const = 0;
+};
 }
