@@ -8,13 +8,17 @@ namespace ms{
             std::cout << static_cast<char>('A'+x) << " ";
         }
         std::cout << '\n';
-        std::cout << "  ┌";
+        std::cout << "   ┌";
         for (int i = 0; i < board.getWidth() * 2+1; ++i) {
             std::cout << "─";
         }
         std::cout << "┐" << '\n';
         for (int y = 0; y < board.getHeight(); ++y) {
-            std::cout << static_cast<char>('A'+y) << " │ ";
+            if (y + 1 < 10) {
+                std::cout << " " << y + 1 << " │ ";
+            } else {
+                std::cout << y + 1 << " │ ";
+            }
             for (int x = 0; x < board.getWidth(); ++x) {
                 auto cell_opt = board.getCell(x, y);
 
@@ -39,7 +43,7 @@ namespace ms{
             }
             std::cout << "│" << '\n';
         }
-        std::cout << "  └";
+        std::cout << "   └";
         for (int i = 0; i < board.getWidth() * 2+1; ++i) {
             std::cout << "─";
         }

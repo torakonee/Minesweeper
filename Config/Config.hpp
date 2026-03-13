@@ -2,16 +2,22 @@
 
 namespace ms {
 
-class Config {
-public:
-    Config() = default;
+    class Config {
+    public:
+        Config() = default;
 
-    int getWidth() const { return width; }
-    int getHeight() const { return height; }
-    int getMines() const { return mines; }
-private:
-    int width = 10;
-    int height = 10;
-    int mines = 10;
-};
+        int getWidth() const { return width; }
+        int getHeight() const { return height; }
+        int getMines() const { return mines; }
+
+        void setWidth(int w) { width = w; }
+        void setHeight(int h) { height = h; }
+        void setMines(int m) { mines = m; }
+
+    private:
+        int width = 10;
+        int height = 10;
+        int mines = 10;
+    };
+
 }
