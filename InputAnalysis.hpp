@@ -15,7 +15,8 @@ public:
   };
 
   struct SizeIn {
-    int size;
+    int size1;
+    int size2;
   };
 
   struct DefaultIn {
