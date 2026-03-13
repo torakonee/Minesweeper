@@ -8,6 +8,7 @@ public:
 
   struct CoordinateIn {
     int x, y;
+    bool isFlag = false;
   };
 
   struct DifficultyIn {
