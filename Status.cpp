@@ -19,10 +19,10 @@ Status::State Status::getState() const {
 }
 void Status::print() const {
   std::cout << "Moves: " << moves << std::endl << "Flags Placed: " << flagsam << std::endl << "Mines on the field: " << cg->getMines() << std::endl;
-  if (state == state::GameOver) {
+  if (state == st::GameOver) {
     std::cout << "Game Over ;-;" << std::endl;
   }
-  if (state == state::Victory) {
+  if (state == st::Victory) {
     std::cout << "You Won! Congratulations!" << std::endl;
   }
 }
