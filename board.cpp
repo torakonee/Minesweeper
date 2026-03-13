@@ -5,7 +5,7 @@
 namespace ms {
 
 Board::Board(int width, int height, int totalMines)
-    : width_(width), height_(height), total_mines_(totalMines) {
+    : width_(width), height_(height), total_mines_(totalMines), mines_generated_(false) {
     if (total_mines_ >= width_ * height_) {
         throw BoardException("Too many mines for the board size");
     }
@@ -34,11 +34,51 @@ std::optional<std::reference_wrapper<const Cell>> Board::getCell(int x, int y) c
     return *grid_[y][x];
 }
 
-void Board::reset() {
-    game_over_ = false;
+void Board::generateMines(int firstX, int firstY) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distX(0, width_ - 1);
+    std::uniform_int_distribution<> distY(0, height_ - 1);
+    
+    int minesPlaced = 0;
+    
+    while (minesPlaced < total_mines_) {
+        int x = distX(gen);
+        int y = distY(gen);
+        
+        if (x == firstX && y == firstY) continue;
+        
+        Cell& cell = *grid_[y][x];
+        
+        if (!cell.isMine()) {
+            cell.setMine(true);
+            minesPlaced++;
+        }
+    }
+    
+    calculateAdjacentCounts();
+    mines_generated_ = true;
+}
+
+void Board::calculateAdjacentCounts() {
     for (int y = 0; y < height_; ++y) {
         for (int x = 0; x < width_; ++x) {
-            grid_[y][x]->reset();
+            if (grid_[y][x]->isMine()) continue;
+            
+            int count = 0;
+            for (int dy = -1; dy <= 1; ++dy) {
+                for (int dx = -1; dx <= 1; ++dx) {
+                    if (dx == 0 && dy == 0) continue;
+                    
+                    int nx = x + dx;
+                    int ny = y + dy;
+                    
+                    if (isValidCoord(nx, ny) && grid_[ny][nx]->isMine()) {
+                        count++;
+                    }
+                }
+            }
+            grid_[y][x]->setAdjacentMines(count);
         }
     }
 }
@@ -53,6 +93,10 @@ bool Board::openCell(int x, int y) {
 
     if (game_over_ || cell.getState() != CellState::Closed) {
         return false;
+    }
+
+    if (!mines_generated_) {
+        generateMines(x, y);
     }
 
     cell.open();
@@ -107,12 +151,17 @@ void Board::toggleFlag(int x, int y) {
         return;
     }
 
+    if (!mines_generated_) {
+        generateMines(x, y);
+    }
+
     Cell& cell = cell_opt->get();
     cell.toggleFlag();
 }
 
 bool Board::isWin() const noexcept {
     if (game_over_) return false;
+    if (!mines_generated_) return false;
 
     for (int y = 0; y < height_; ++y) {
         for (int x = 0; x < width_; ++x) {
@@ -126,6 +175,16 @@ bool Board::isWin() const noexcept {
         }
     }
     return true;
+}
+
+void Board::reset() {
+    game_over_ = false;
+    mines_generated_ = false;
+    for (int y = 0; y < height_; ++y) {
+        for (int x = 0; x < width_; ++x) {
+            grid_[y][x]->reset();
+        }
+    }
 }
 
 }
