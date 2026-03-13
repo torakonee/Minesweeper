@@ -12,6 +12,8 @@ add_executable(Minesweeper
         core/cell.cpp
         Visual/Render.cpp
         Config/Config.cpp
-        core/Status.cpp
+        Status.cpp
+        ConfigAnalysis.cpp
+        CoordinateAnalysis.cpp
         main.cpp
 )
