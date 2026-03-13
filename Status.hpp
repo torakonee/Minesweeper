@@ -24,4 +24,5 @@ private:
   int flagsam = 0;
   std::shared_ptr<Config> cg;
   State st = State::Running;
-
+};
+}
