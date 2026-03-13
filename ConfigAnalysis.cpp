@@ -8,7 +8,7 @@ InputAnalysis::Input ConfigAnalysis::check (const std::string& inp) const {
   }
   int sz;
   std::stringstream st(inp);
-  if (st >> sz) {
+  if (st >> sz && sz > 0) {
     return InputAnalysis::SizeIn {sz, sz};
   }
   return InputAnalysis::InvalidIn {};
