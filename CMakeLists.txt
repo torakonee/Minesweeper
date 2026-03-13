@@ -40,3 +40,18 @@ if(BUILD_TESTS)
     gtest_discover_tests(test_cell)
     gtest_discover_tests(test_board)
 endif()
+
+include_directories(core)
+include_directories(Visual)
+include_directories(Config)
+
+add_executable(Minesweeper
+        core/board.cpp
+        core/cell.cpp
+        Visual/Render.cpp
+        Config/Config.cpp
+        Status.cpp
+        ConfigAnalysis.cpp
+        CoordinateAnalysis.cpp
+        main.cpp
+)
