@@ -22,5 +22,5 @@ private:
   int moves = 0;
   int flagsam = 0;
   std::shared_ptr<Config> cg;
-  GameState st = GameState::Running;
+  State st = State::Running;
 
