@@ -23,6 +23,6 @@ private:
   int moves = 0;
   int flagsam = 0;
   std::shared_ptr<Config> cg;
-  State st = State::Running;
+  State st = State::InProgress;
 };
 }
