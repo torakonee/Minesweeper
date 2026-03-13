@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <memory>
-#include "config.hpp"
+#include "Config/Config.hpp"
 
 namespace ms {
 class Status {
