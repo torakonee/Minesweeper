@@ -2,9 +2,10 @@
 #include <cctype>
 
 namespace ms {
-  InputAnalysis::Input CoordinateInput::check(const std::string& inp) const {
+  InputAnalysis::Input CoordinateAnalysis::check(const std::string& inp) const {
+    std::string sws = inp;
     if (inp.size() < 2 || !std::isalpha(inp[0])) {
-      return InvalidIn {};
+      return InputAnalysis::InvalidIn {};
     }
     bool flag = false;
     if (inp.size() > 3 && (inp[0] == 'f' || inp[0] == 'F') && inp[1] == ' ') {
@@ -13,12 +14,11 @@ namespace ms {
     }
     int x = std::toupper(inp[0]) - 'A';
     try {
-      std::string sws = inp;
       int y = std::stoi(sws.erase(0, 1)) - 1;
-      return CoordinateIn {x, y, flag};
+      return InputAnalysis::CoordinateIn {x, y, flag};
     }
     catch (...) {
-      return InvalidIn {};
+      return InputAnalysis::InvalidIn {};
     }
   }
 }
