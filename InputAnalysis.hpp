@@ -11,6 +11,15 @@ public:
     bool isFlag = false;
   };
 
+  enum class Difficulty {
+    Easy,
+    easy,
+    Normal,
+    normal,
+    Hard,
+    hard
+  };
+
   struct DifficultyIn {
     std::string difficulty;
   };
