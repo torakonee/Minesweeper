@@ -13,11 +13,8 @@ public:
 
   enum class Difficulty {
     Easy,
-    easy,
     Normal,
-    normal,
-    Hard,
-    hard
+    Hard
   };
 
   struct DifficultyIn {
