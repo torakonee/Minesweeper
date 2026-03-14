@@ -45,13 +45,13 @@ include_directories(core)
 include_directories(Visual)
 include_directories(Config)
 
-add_executable(Minesweeper
-        core/board.cpp
-        core/cell.cpp
-        Visual/Render.cpp
-        Config/Config.cpp
-        Status.cpp
-        ConfigAnalysis.cpp
-        CoordinateAnalysis.cpp
-        main.cpp
+add_executable(main
+    main.cpp
+    cell.cpp
+    board.cpp
+    Render.cpp
+    Config.cpp
+    Status.cpp
+    ConfigAnalysis.cpp
+    CoordinateAnalysis.cpp
 )
