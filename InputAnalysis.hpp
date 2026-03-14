@@ -21,7 +21,7 @@ public:
   };
 
   struct DifficultyIn {
-    std::string difficulty;
+    Difficulty difficulty;
   };
 
   struct SizeIn {
