@@ -18,11 +18,8 @@ namespace ms {
 
         int mineCount(const std::string& diff) {
             static const std::unordered_map<std::string, int> minesDiff{
-                {"easy", 10},
                 {"Easy", 10},
-                {"normal", 40},
                 {"Normal", 40},
-                {"hard", 99},
                 {"Hard", 99}
             };
 
